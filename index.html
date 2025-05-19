@@ -1,102 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Story Idea Generation</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f2f2f2;
-      padding: 20px;
-    }
-    h1 {
-      color: #007BFF;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <h1>Generate story ideas</h1>
-  <br>
-  <p id="promptIntro">Okay, hear me out:</p>
-  <p id="storyIdea">Click the button to change this text.</p>
-  <button onclick="getRandomStoryIdea()">Yeah. Nah.</button>
-  
-  <script>
-    const prompts = [
-        "Okay, hear me out:",
-        "Struggling, are you? Fine. Try this:",
-        "This one might actually work:",
-        "You didn’t ask, but here it is anyway:",
-        "Alright, story gremlin, feast on this:",
-        "Woke up at 3AM with this idea, don’t waste it:",
-        "Got writer’s block? Consider this chaos:",
-        "Listen, listen, how about:",
-        "The void spoke. It said:",
-        "Ooo, this one has potential:"
-    ];
+    <head>
+        <meta charset="UTF-8">
+        <title>Story Idea Generation</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                background-color: #f2f2f2;
+                padding: 20px;
+            }
+            h1 {
+                color: #007BFF;
+            }
+            button {
+                padding: 10px 20px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Generate story ideas</h1>
+        <br>
 
-    const genres = [
-        "Science Fiction", "Fantasy", "Mystery", "Romance", "Horror", "Adventure", 
-        "Thriller", "Historical", "Comedy", "Superhero", "Fairy Tale", "Western", "Steampunk"
-    ];
-    const subgenres = [
-        "Cyberpunk", "Steampunk", "Noir", "Urban Fantasy", "Space Opera", "Epic Fantasy", 
-        "Romantic Suspense", "Gothic Horror", "Alternate History", "Magical Realism", 
-        "Time Travel", "Paranormal", "Mythology", "Post-Apocalyptic", "Zombie Apocalypse"
-    ];
-    const locations = [
-        "A post-apocalyptic wasteland", "A bustling city", "A forgotten castle", 
-        "A secret underwater base", "A haunted mansion", "A spaceship", "A desert island", 
-        "A dystopian government facility", "A flying city in the clouds", "A floating island", 
-        "A secret library hidden in a volcano", "A gigantic treehouse village", 
-        "A haunted circus", "A magical forest that shifts with the seasons", "A tiny town that’s always midnight"
-    ];
-    const characters = [
-        "A reluctant hero", "An escaped convict", "A haunted scientist", "A charming thief", 
-        "A lost astronaut", "A misunderstood monster", "A powerful sorcerer", "A rookie detective", 
-        "A talking cat", "A ghost that can't remember who they were", "A robot with human emotions", 
-        "A mermaid who can’t swim", "A time traveler who keeps forgetting their mission", 
-        "A grumpy wizard who just wants a nap", "A talking plant", "A villain with a heart of gold"
-    ];
-    const twists = [
-        "the villain is secretly allergic to their own plans.", 
-        "the world is run by squirrels, and nobody notices.", 
-        "a magical pizza is the key to saving the universe.", 
-        "the protagonist wakes up and discovers their life is a video game.",
-        "everyone turns into birds halfway through the story.", 
-        "the villain's biggest weakness is an accidental pun.",
-        "a dog becomes the ruler of an entire kingdom.",
-        "the protagonist's best friend is a sentient piece of cheese.", 
-        "the sun is actually a giant lamp that can be switched off.", "The characters are all in a reality show broadcast to aliens.", 
-        "the main character keeps switching bodies with random strangers every 10 minutes.", 
-        "the villain’s evil plans are really just a misunderstanding.", "The protagonist’s shadow has a mind of its own.",
-        "everyone keeps speaking in rhyme for no reason.", "The villain’s lair is actually just a really nice coffee shop.",
-        "A magic door leads to a land where socks are the most powerful currency."
-    ];
+        <!-- Where the prompt will be displayed -->
+        <p id="promptIntro">Okay, hear me out:</p>
+        <p id="storyIdea">Click the button to change this text.</p>
 
-    function getRandomStoryIdea() {
-        const prompt = prompts[Math.floor(Math.random() * prompts.length)];
-        const genre = genres[Math.floor(Math.random() * genres.length)];
-        const subgenre = subgenres[Math.floor(Math.random() * subgenres.length)];
-        const location = locations[Math.floor(Math.random() * locations.length)];
-        const character = characters[Math.floor(Math.random() * characters.length)];
-        const twist = twists[Math.floor(Math.random() * twists.length)];
+        <!-- Button to generate a new idea -->
+        <br>
+        <button id="retryBtn" onclick="getRandomStoryIdea()">Yeah. Nah.</button>
 
-        const storyIdea = `${genre} / ${subgenre}: ${character} in ${location}, where ${twist}`;
+        <!-- Include the script for the variables -->
+        <script src="storyVariables.js"></script>
 
-        document.getElementById("promptIntro").innerText = prompt;
-        document.getElementById("storyIdea").innerText = storyIdea;
-    }
+        <!-- Write logic -->
+        <script>
+            function getRandomStoryIdea() {
+            const prompt = prompts[Math.floor(Math.random() * prompts.length)];
+            const retryText = retryTexts[Math.floor(Math.random() * retryTexts.length)];
 
-    window.onload = getRandomStoryIdea;
-  </script>
-</body>
+            const genre = genres[Math.floor(Math.random() * genres.length)];
+            const subgenre = subgenres[Math.floor(Math.random() * subgenres.length)];
+            const location = locations[Math.floor(Math.random() * locations.length)];
+            const character = characters[Math.floor(Math.random() * characters.length)];
+            const twist = twists[Math.floor(Math.random() * twists.length)];
+
+            const storyIdea = `${genre} / ${subgenre}: ${character} in ${location}, where ${twist}`;
+
+            document.getElementById("promptIntro").innerText = prompt;
+            document.getElementById("storyIdea").innerText = storyIdea;
+            document.getElementById("retryBtn").innerText = retryText;
+            }
+
+            window.onload = getRandomStoryIdea;
+        </script>
+    </body>
 </html>
