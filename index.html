@@ -2,61 +2,62 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Story Idea Generation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Story Idea Generator</title>
         <style>
-            body {
-                font-family: Arial, sans-serif;
-                text-align: center;
-                background-color: #f2f2f2;
-                padding: 20px;
-            }
-            h1 {
-                color: #007BFF;
-            }
-            button {
-                padding: 10px 20px;
-                background-color: #007BFF;
-                color: white;
-                border: none;
-                cursor: pointer;
-            }
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 45px;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    p {
+      font-size: 40px;
+      color: #34495e;
+      margin-bottom: 25px;
+    }
+    button {
+      padding: 14px 28px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #e67e22;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      opacity: 0; /* Hide the button on initial load */
+    }
+    button:hover {
+      background-color: #d35400;
+    }
         </style>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
     </head>
     <body>
-        <h1>Generate story ideas</h1>
-        <br>
+        <div>
+            <!-- Where the prompt will be displayed -->
+            <p id="promptIntro"> </p>
+            <p id="storyIdea"> </p>
 
-        <!-- Where the prompt will be displayed -->
-        <p id="promptIntro">Okay, hear me out:</p>
-        <p id="storyIdea">Click the button to change this text.</p>
-
-        <!-- Button to generate a new idea -->
-        <br>
-        <button id="retryBtn" onclick="getRandomStoryIdea()">Yeah. Nah.</button>
+            <!-- Button to generate a new idea -->
+            <br>
+            <button id="retryBtn" onclick="getRandomStoryIdea()">Yeah. Nah.</button>
+        </div>
 
         <!-- Include the script for the variables -->
         <script src="storyVariables.js"></script>
-
+        
         <!-- Write logic -->
-        <script>
-            function getRandomStoryIdea() {
-            const prompt = prompts[Math.floor(Math.random() * prompts.length)];
-            const retryText = retryTexts[Math.floor(Math.random() * retryTexts.length)];
-
-            const genre = genres[Math.floor(Math.random() * genres.length)];
-            const subgenre = subgenres[Math.floor(Math.random() * subgenres.length)];
-            const location = locations[Math.floor(Math.random() * locations.length)];
-            const character = characters[Math.floor(Math.random() * characters.length)];
-            const twist = twists[Math.floor(Math.random() * twists.length)];
-
-            const storyIdea = `${genre} / ${subgenre}: ${character} in ${location}, where ${twist}`;
-
-            document.getElementById("promptIntro").innerText = prompt;
-            document.getElementById("storyIdea").innerText = storyIdea;
-            document.getElementById("retryBtn").innerText = retryText;
-            }
-
-            window.onload = getRandomStoryIdea;
-        </script>
+        <script src="logic.js"></script>
     </body>
 </html>
