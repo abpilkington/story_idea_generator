@@ -4,73 +4,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Story Idea Generator</title>
-        <style>
-    body {
-      font-family: 'Georgia', serif;
-      background-color: #f9f9f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
-    }
-    h1 {
-      font-size: 45px;
-      color: #2c3e50;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    p {
-      font-size: 40px;
-      color: #34495e;
-      margin-bottom: 25px;
-    }
-    button {
-      padding: 14px 28px;
-      font-size: 18px;
-      color: #fff;
-      background-color: #e67e22;
-      border: none;
-      border-radius: 5px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      opacity: 0; /* Hide the button on initial load */
-    }
-    button:hover {
-      background-color: #d35400;
-    }
-        </style>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+        <link rel="stylesheet" href="../css/styles.css">
     </head>
     <body>
-        <div>
-            <!-- Where the prompt will be displayed -->
-            <p id="promptIntro"> </p>
-            <p id="storyIdea"> </p>
-
-            <!-- Button to generate a new idea -->
-            <br>
-            <button id="retryBtn" onclick="getRandomStoryIdea()">Yeah. Nah.</button>
-        </div>
-
-        <!-- Include the script for the variables -->
-        <script src="storyVariables.js"></script>
-        
-        <!-- Write logic -->
-        <script src="logic.js"></script>
+        <ul class="button-list">
+            <li><a href="./text_generator/text_generator.html">Story Prompts</a></li>
+          </ul>
     </body>
-    <footer style="
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  padding: 10px 15px;
-  font-size: 14px;
-  color: #333;
-  border-top-left-radius: 8px;
-">
-  Inspired by <a href="https://whothefuckismydndcharacter.com" target="_blank">WTFIMDNDC</a>
-
-</footer>
+    <footer>
+        Made by <a href="https://github.com/abpilkington" target="_blank">Alex</a>
+    </footer>
 
 </html>

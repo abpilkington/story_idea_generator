@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Story Idea Generator</title>
+        <link rel="stylesheet" href="../css/styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+    </head>
+    <body>
+        <div>
+            <!-- Where the prompt will be displayed -->
+            <p id="promptIntro"> </p>
+            <p id="storyIdea"> </p>
+
+            <!-- Button to generate a new idea -->
+            <br>
+            <button id="retryBtn" onclick="getRandomStoryIdea()">Yeah. Nah.</button>
+        </div>
+
+        <!-- Include the script for the variables -->
+        <script src="storyVariables.js"></script>
+        
+        <!-- Write logic -->
+        <script src="logic.js"></script>
+    </body>
+    <footer>
+        Inspired by <a href="https://whothefuckismydndcharacter.com" target="_blank">WTFIMDNDC</a>
+        <br>
+        Made by <a href="https://github.com/abpilkington" target="_blank">Alex</a>
+    </footer>
+
+</html>
