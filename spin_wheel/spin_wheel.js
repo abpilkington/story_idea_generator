@@ -41,10 +41,11 @@ class SpinWheel {
     this.canvas = document.createElement('canvas');
     this.canvas.width = this.canvasSize;
     this.canvas.height = this.canvasSize;
+    const canvasBorderColor = this.segmentColors[this.segmentColors.length - 2];
     this.canvas.style.cssText = `
       background-color: #f4f4f2; /* Soft off-white background for the wheel */
       border-radius: 50%;
-      border: 3px solid #d1e0d1; /* Light grey-green border */
+      border: 3px solid ${canvasBorderColor}; /* Light grey-green border */
     `;
 
     const pointerColor = "#000";
@@ -52,7 +53,7 @@ class SpinWheel {
     this.pointer.className = 'pointer';
     this.pointer.style.cssText = `
       position: relative;
-      top: 50%; /* Vertically center the pointer */
+      top: ${this.canvasSize / 2}px; /* Vertically center the pointer */
       left: ${this.canvasSize / 2}px; /* Horizontally center the pointer */
       width: 0;
       height: 0;
@@ -60,8 +61,9 @@ class SpinWheel {
       border-bottom: 20px solid transparent;
       border-right: 30px solid ${pointerColor};
       z-index: 10;
-      transform: translate(-50%, -50%); /* Correctly offset the pointer to ensure it's centered */
+      transform: translate(-50%, 50%); /* Correctly offset the pointer to ensure it's centered */
     `;
+
 
     const buttonColor = this.segmentColors[this.segmentColors.length - 5];
     const buttonHoverColor = this.segmentColors[this.segmentColors.length - 10];
@@ -69,7 +71,7 @@ class SpinWheel {
     this.spinBtn.style.cssText = `
       margin-top: 20px;
       padding: 12px 24px;
-      font-size: 1.1rem;
+      font-size: 1.1rem;  
       border: none;
       color: white;
       background-color: ${buttonColor};
@@ -83,7 +85,7 @@ class SpinWheel {
     const style = document.createElement('style');
     style.innerHTML = `
       button:hover {
-        background-color: ${buttonColor};
+        background-color: ${buttonHoverColor};
         transform: scale(1.05); /* Slight scale for hover effect */
       }
     `;
@@ -91,6 +93,10 @@ class SpinWheel {
 
     this.resultDiv = document.createElement('div');
     this.resultDiv.className = 'result';
+    this.resultDiv.style.cssText = `
+      margin-top: 20px;
+    `;
+    this.resultDiv.textContent = `Result: `;
 
     const wrapper = document.createElement('div');
     wrapper.style.cssText = `
@@ -142,24 +148,43 @@ class SpinWheel {
     const randomIndex = Math.floor(Math.random() * this.segments.length);
     const anglePerSegment = 360 / this.segments.length;
     const stopAngle = 360 - (randomIndex * anglePerSegment) - (anglePerSegment / 2);
-
+  
     const finalAngle = (fullSpins * 360) + stopAngle;
-
+  
     let currentAngle = 0;
     const increment = 20;
     const spinSpeed = 20;
-
-    const animate = () => {
-      currentAngle += increment;
-      if (currentAngle < finalAngle) {
-        this.canvas.style.transform = `rotate(${currentAngle}deg)`;
+  
+    // Reset startTime each time the spin is triggered
+    this.startTime = null;
+  
+    // Ease-in-out function
+    const easeInOut = (t) => {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    };
+  
+    const animate = (timestamp) => {
+      if (!this.startTime) this.startTime = timestamp;
+      
+      const timeElapsed = timestamp - this.startTime;
+      const duration = 5000;  // Duration of the spin animation (in milliseconds)
+      const t = Math.min(timeElapsed / duration, 1);  // Normalize time to [0, 1]
+      const easedT = easeInOut(t);  // Apply easing function
+  
+      currentAngle = easedT * finalAngle;
+  
+      this.canvas.style.transform = `rotate(${currentAngle}deg)`;
+  
+      if (t < 1) {
         requestAnimationFrame(animate);
       } else {
         const selected = this.segments[randomIndex];
         this.resultDiv.textContent = `Result: ${selected}`;
       }
     };
-
-    animate();
+  
+    requestAnimationFrame(animate);
   }
+  
+  
 }
