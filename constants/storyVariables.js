@@ -1,38 +1,3 @@
-const prompts = [
-    "Okay, hear me out:",
-    "Struggling, are you? Fine. Try this:",
-    "This one might actually work:",
-    "You didn’t ask, but here it is anyway:",
-    "Alright, story gremlin, feast on this:",
-    "Woke up at 3AM with this idea, don’t waste it:",
-    "Got writer’s block? Consider this chaos:",
-    "Listen, listen, how about:",
-    "The void spoke. It said:",
-    "Ooo, this one has potential:"
-];
-
-const retryTexts = [
-    "yeah, no.",
-    "still no.",
-    "nope. again.",
-    "hard no.",
-    "absolutely not.",
-    "wrong. again.",
-    "nah. swing and a miss.",
-    "no. worse than last time.",
-    "no, but you seem committed to this failure.",
-    "nope. bold of you to try though.",
-    "no. please stop.",
-    "not even close.",
-    "no. embarrassing, really.",
-    "no. and somehow, still worse.",
-    "not today. try again.",
-    "no. like… big no.",
-    "are you even trying?",
-    "no. this is just sad.",
-  ];
-  
-
 const genres = [
 "action", "comedy", "drama", "fantasy", "sci-fi", "horror", "romance",
 "mystery", "thriller", "adventure", "superhero", "western", "noir", "slice of life"

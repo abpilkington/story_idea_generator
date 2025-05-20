@@ -1,0 +1,21 @@
+const retryTexts = [
+    "yeah, no.",
+    "still no.",
+    "nope. again.",
+    "hard no.",
+    "absolutely not.",
+    "wrong. again.",
+    "nah. swing and a miss.",
+    "no. worse than last time.",
+    "no, but you seem committed to this failure.",
+    "nope. bold of you to try though.",
+    "no. please stop.",
+    "not even close.",
+    "no. embarrassing, really.",
+    "no. and somehow, still worse.",
+    "not today. try again.",
+    "no. like… big no.",
+    "are you even trying?",
+    "no. this is just sad.",
+  ];
+  
